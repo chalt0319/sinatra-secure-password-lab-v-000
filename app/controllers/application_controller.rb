@@ -34,6 +34,7 @@ class ApplicationController < Sinatra::Base
 
   post "/login" do
     @user = User.find(username: params[:username], password: params[:password])
+    @user.id = session[:user_id]
   end
 
   get "/failure" do
