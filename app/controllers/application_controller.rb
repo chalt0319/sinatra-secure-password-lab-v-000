@@ -19,7 +19,7 @@ class ApplicationController < Sinatra::Base
   post "/signup" do
     @user = User.create(username: params[:username], password: params[:password])
     @user.save
-    redirect '/login'
+    redirect :'/login'
   end
 
   get '/account' do
@@ -35,7 +35,7 @@ class ApplicationController < Sinatra::Base
   post "/login" do
     @user = User.find(username: params[:username], password: params[:password])
     @user.id = session[:user_id]
-    redirect '/account'
+    redirect :'/account'
   end
 
   get "/failure" do
